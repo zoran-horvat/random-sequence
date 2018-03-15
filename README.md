@@ -1,5 +1,4 @@
-# random-sequence
-## Generating an IEnumerable&lt;int> of Infinitely Many Random Numbers
+# Generating an IEnumerable&lt;int> of Infinitely Many Random Numbers #
 
 The goal of the provided classes is to generate an infinite sequence of random integers from a given range. The sequence must be isolated, i.e. independent from any global state and from any other sequence in use at the same time. Therefore, the consumer must be safe to instantiate and consume the sequence of random numbers within own thread, without the fear that any other piece of code executing concurrently might interfere with the results it observes.
 
