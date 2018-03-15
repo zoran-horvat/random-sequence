@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CodingHelmet.Random;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace RandomSequence
+namespace Demo
 {
-
     class Program
     {
         static void Main(string[] args)

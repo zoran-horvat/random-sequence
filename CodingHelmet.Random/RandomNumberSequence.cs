@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace RandomSequence
+namespace CodingHelmet.Random
 {
     public class RandomNumbersSequence : IEnumerable<int>
     {

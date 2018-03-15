@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{CDF64F4B-4FBF-4EBF-AD82-BEDE681DA7F1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RandomSequence</RootNamespace>
-    <AssemblyName>RandomSequence</AssemblyName>
+    <RootNamespace>Demo</RootNamespace>
+    <AssemblyName>Demo</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,15 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomBitsSequence.cs" />
-    <Compile Include="RandomBytesSequence.cs" />
-    <Compile Include="RandomNumberSequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodingHelmet.Random\CodingHelmet.Random.csproj">
+      <Project>{E63C8EFC-10AC-4C3D-83B6-AE3C63CC116D}</Project>
+      <Name>CodingHelmet.Random</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
