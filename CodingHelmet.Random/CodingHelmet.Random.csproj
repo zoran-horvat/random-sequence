@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomBitsSequence.cs" />
+    <Compile Include="Infrastructure\RandomBits.cs" />
     <Compile Include="RandomBytesSequence.cs" />
     <Compile Include="RandomNumberSequence.cs" />
   </ItemGroup>

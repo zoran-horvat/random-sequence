@@ -7,9 +7,9 @@ namespace CodingHelmet.Random
     public class RandomNumbersSequence : IEnumerable<int>
     {
         private int NoLessThan { get; }
-        private int NoGreaterThan { get; }
         private ulong Range { get; }
-        private IEnumerator<uint> Bits { get; }
+        private int BitsPerChunk { get; }
+        private RandomBits Bits { get; }
 
         public RandomNumbersSequence(int lowerInclusive, int upperInclusive)
         {
@@ -17,30 +17,18 @@ namespace CodingHelmet.Random
                 throw new ArgumentException("Lower inclusive boundary must not exceed upper inclusive boundary.");
 
             this.NoLessThan = lowerInclusive;
-            this.NoGreaterThan = upperInclusive;
+
+            this.Bits = new RandomBits();
+
             this.Range = (ulong)((long)upperInclusive - lowerInclusive + 1);
-
-            this.Bits = new RandomBitsSequence(this.RequiredBitsCount).GetEnumerator();
-        }
-
-        private int RequiredBitsCount
-        {
-            get
-            {
-                int bitsPerChunk = 0;
-                while ((1UL << bitsPerChunk) < this.Range)
-                {
-                    bitsPerChunk += 1;
-                }
-                return bitsPerChunk;
-            }
+            this.BitsPerChunk = this.Bits.RequiredBitsFor(this.Range);
         }
 
         public IEnumerator<int> GetEnumerator()
         {
             while (true)
             {
-                this.Bits.MoveNext();
+                this.Bits.MoveBits(this.BitsPerChunk);
                 if (this.Bits.Current >= this.Range)
                     continue;
 
