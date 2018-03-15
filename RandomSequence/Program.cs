@@ -14,7 +14,7 @@ namespace RandomSequence
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            int taken = new RandomNumberSequence(0, 26).Take(count).Count();
+            int taken = new RandomNumbersSequence(0, 26).Take(count).Count();
             sw.Stop();
 
             int numbersPerSecond = (int)((long)taken * 1000 / sw.ElapsedMilliseconds);
@@ -27,7 +27,7 @@ namespace RandomSequence
             sw.Start();
 
             int passwordsCount =
-                new RandomNumberSequence(4, 8)
+                new RandomNumbersSequence(4, 8)
                     .Select(length => validLetters.ToRandomSequence().Take(length))
                     .Select(chars => new string(chars.ToArray()))
                     .Take(1_000_000)
@@ -39,7 +39,7 @@ namespace RandomSequence
             Console.WriteLine($"\nGenerating {passwordsPerSecond:#,##0} passwords per second.");
 
             IEnumerable<string> passwords =
-                new RandomNumberSequence(4, 8)
+                new RandomNumbersSequence(4, 8)
                     .Select(length => validLetters.ToRandomSequence().Take(length))
                     .Select(chars => new string(chars.ToArray()))
                     .Take(10);

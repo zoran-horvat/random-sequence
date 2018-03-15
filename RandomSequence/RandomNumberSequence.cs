@@ -4,14 +4,14 @@ using System.Collections.Generic;
 
 namespace RandomSequence
 {
-    public class RandomNumberSequence : IEnumerable<int>
+    public class RandomNumbersSequence : IEnumerable<int>
     {
         private int NoLessThan { get; }
         private int NoGreaterThan { get; }
         private ulong Range { get; }
         private IEnumerator<uint> Bits { get; }
 
-        public RandomNumberSequence(int lowerInclusive, int upperInclusive)
+        public RandomNumbersSequence(int lowerInclusive, int upperInclusive)
         {
             if (lowerInclusive > upperInclusive)
                 throw new ArgumentException("Lower inclusive boundary must not exceed upper inclusive boundary.");

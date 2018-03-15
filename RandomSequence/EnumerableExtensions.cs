@@ -9,6 +9,6 @@ namespace RandomSequence
             sequence.ToArray().ToRandomSequence();
 
         public static IEnumerable<T> ToRandomSequence<T>(this T[] array) =>
-            new RandomNumberSequence(0, array.Length - 1).Select(index => array[index]);
+            new RandomNumbersSequence(0, array.Length - 1).Select(index => array[index]);
     }
 }
