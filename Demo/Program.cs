@@ -30,7 +30,7 @@ namespace Demo
                 new RandomNumbersSequence(4, 8)
                     .Select(length => validLetters.ToRandomSequence().Take(length))
                     .Select(chars => new string(chars.ToArray()))
-                    .Take(1_000_000)
+                    .Take(300_000)
                     .Count();
             sw.Stop();
 
@@ -46,6 +46,11 @@ namespace Demo
 
             Console.WriteLine("\nSample passwords:\n" + string.Join(Environment.NewLine, passwords.ToArray()));
 
+            IEnumerable<int> shuffled = Enumerable.Range(1, 10).Shuffle();
+            string report = string.Join(", ", shuffled.Select(k => k.ToString()).ToArray());
+            Console.WriteLine($"\nShuffled numbers: {report}");
+
+            Console.WriteLine("\nPress ENTER to exit. . . ");
             Console.ReadLine();
         }
     }
