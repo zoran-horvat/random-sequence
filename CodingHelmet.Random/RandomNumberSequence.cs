@@ -11,7 +11,7 @@ namespace CodingHelmet.Random
         private int BitsPerChunk { get; }
         private RandomBits Bits { get; }
 
-        public RandomNumbersSequence(int lowerInclusive, int upperInclusive)
+        private RandomNumbersSequence(int lowerInclusive, int upperInclusive)
         {
             if (lowerInclusive > upperInclusive)
                 throw new ArgumentException("Lower inclusive boundary must not exceed upper inclusive boundary.");
@@ -23,6 +23,12 @@ namespace CodingHelmet.Random
             this.Range = (ulong)((long)upperInclusive - lowerInclusive + 1);
             this.BitsPerChunk = this.Bits.RequiredBitsFor(this.Range);
         }
+
+        public static IEnumerable<int> Create(int lowerInclusive, int upperExclusive) =>
+            new RandomNumbersSequence(lowerInclusive, upperExclusive - 1);
+
+        public static IEnumerable<int> CreateInclusive(int lowerInclusive, int upperInclusive) =>
+            new RandomNumbersSequence(lowerInclusive, upperInclusive);
 
         public IEnumerator<int> GetEnumerator()
         {

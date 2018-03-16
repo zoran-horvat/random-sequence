@@ -9,7 +9,7 @@ namespace CodingHelmet.Random
             sequence.ToArray().ToRandomSequence();
 
         public static IEnumerable<T> ToRandomSequence<T>(this T[] array) =>
-            new RandomNumbersSequence(0, array.Length - 1).Select(index => array[index]);
+            RandomNumbersSequence.Create(0, array.Length).Select(index => array[index]);
 
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> sequence) =>
             sequence.ToArray().ShuffleCopy();
@@ -21,10 +21,10 @@ namespace CodingHelmet.Random
 
             while (remaining > 0)
             {
-                generator.MoveNext(0, remaining - 1);
+                generator.MoveNext(0, remaining);
                 yield return content[generator.Current];
-                content[generator.Current] = content[remaining - 1];
                 remaining -= 1;
+                content[generator.Current] = content[remaining];
             }
         }
     }

@@ -5,7 +5,10 @@
         public int Current { get; private set; }
         private RandomBits Bits { get; } = new RandomBits();
 
-        public void MoveNext(int lowerInclusive, int upperInclusive)
+        public void MoveNext(int lowerInclusive, int upperExclusive) =>
+            this.MoveNextInclusive(lowerInclusive, upperExclusive - 1);
+
+        public void MoveNextInclusive(int lowerInclusive, int upperInclusive)
         {
             ulong range = (ulong)((long)upperInclusive - lowerInclusive + 1);
             do
