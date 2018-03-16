@@ -21,7 +21,7 @@ namespace Demo
 
             Console.WriteLine($"Generating {numbersPerSecond:#,##0} random numbers per second.");
 
-            char[] validLetters = new[] { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
+            string validLetters = "bcdfghjkmnpqrstvwxyz";
 
             sw = new Stopwatch();
             sw.Start();
