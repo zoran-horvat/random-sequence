@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace CodingHelmet.Randomization
@@ -9,11 +11,23 @@ namespace CodingHelmet.Randomization
         private readonly int BufferLength = 16;
         private byte[] Buffer { get; }
         private int Remaining = 0;
-        private RandomNumberGenerator NumberGenerator { get; } = RandomNumberGenerator.Create();
+        private Random RandomNumbers { get; }
 
         public RandomBytesSequence()
         {
             this.Buffer = new byte[BufferLength];
+            int seed = this.GenerateSeed();
+            this.RandomNumbers = new Random(seed);
+        }
+
+        private int GenerateSeed() =>
+            this.GenerateSeedBytes(new byte[4])
+                .Aggregate(0, (seed, cur) => (seed << 8) | cur);
+
+        private byte[] GenerateSeedBytes(byte[] buffer)
+        {
+            RandomNumberGenerator.Create().GetBytes(buffer);
+            return buffer;
         }
 
         public IEnumerator<byte> GetEnumerator()
@@ -22,7 +36,7 @@ namespace CodingHelmet.Randomization
             {
                 if (this.Remaining == 0)
                 {
-                    this.NumberGenerator.GetBytes(this.Buffer);
+                    this.RandomNumbers.NextBytes(this.Buffer);
                     this.Remaining = this.Buffer.Length;
                 }
 
