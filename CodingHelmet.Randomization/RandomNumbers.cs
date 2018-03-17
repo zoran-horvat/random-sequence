@@ -1,4 +1,4 @@
-﻿namespace CodingHelmet.Random
+﻿namespace CodingHelmet.Randomization
 {
     public class RandomNumbers
     {

@@ -49,9 +49,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodingHelmet.Random\CodingHelmet.Random.csproj">
+    <ProjectReference Include="..\CodingHelmet.Randomization\CodingHelmet.Randomization.csproj">
       <Project>{E63C8EFC-10AC-4C3D-83B6-AE3C63CC116D}</Project>
-      <Name>CodingHelmet.Random</Name>
+      <Name>CodingHelmet.Randomization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CodingHelmet.Random
+namespace CodingHelmet.Randomization
 {
     internal class RandomBits
     {

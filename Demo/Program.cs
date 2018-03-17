@@ -1,4 +1,4 @@
-﻿using CodingHelmet.Random;
+﻿using CodingHelmet.Randomization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

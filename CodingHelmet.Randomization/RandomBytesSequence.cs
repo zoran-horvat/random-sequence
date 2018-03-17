@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-namespace CodingHelmet.Random
+namespace CodingHelmet.Randomization
 {
     public class RandomBytesSequence : IEnumerable<byte>
     {
