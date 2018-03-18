@@ -36,7 +36,7 @@ namespace CodingHelmet.Randomization
             while (this.BufferedBits < bitsCount)
             {
                 this.BytesEnumerator.MoveNext();
-                this.Buffer = ((ulong)this.BytesEnumerator.Current) << this.BufferedBits;
+                this.Buffer = this.Buffer | ((ulong)this.BytesEnumerator.Current << this.BufferedBits);
                 this.BufferedBits += 8;
             }
         }
