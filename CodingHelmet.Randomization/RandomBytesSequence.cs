@@ -11,32 +11,20 @@ namespace CodingHelmet.Randomization
         private readonly int BufferLength = 16;
         private byte[] Buffer { get; }
         private int Remaining = 0;
-        private Random RandomNumbers { get; }
+        private Random Random{ get; }
 
         public RandomBytesSequence()
         {
             this.Buffer = new byte[BufferLength];
-            int seed = this.GenerateSeed();
-            this.RandomNumbers = new Random(seed);
+            this.Random =  RandomNumbers.SeedRandom();
         }
-
-        private int GenerateSeed() =>
-            this.GenerateSeedBytes(new byte[4])
-                .Aggregate(0, (seed, cur) => (seed << 8) | cur);
-
-        private byte[] GenerateSeedBytes(byte[] buffer)
-        {
-            RandomNumberGenerator.Create().GetBytes(buffer);
-            return buffer;
-        }
-
         public IEnumerator<byte> GetEnumerator()
         {
             while (true)
             {
                 if (this.Remaining == 0)
                 {
-                    this.RandomNumbers.NextBytes(this.Buffer);
+                    this.Random.NextBytes(this.Buffer);
                     this.Remaining = this.Buffer.Length;
                 }
 

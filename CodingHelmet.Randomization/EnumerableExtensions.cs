@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CodingHelmet.Randomization
@@ -17,14 +18,14 @@ namespace CodingHelmet.Randomization
         private static IEnumerable<T> ShuffleCopy<T>(this T[] content)
         {
             int remaining = content.Length;
-            RandomNumbers generator = new RandomNumbers();
+            Random generator = RandomNumbers.SeedRandom();
 
             while (remaining > 0)
             {
-                generator.MoveNext(0, remaining);
-                yield return content[generator.Current];
+                int index = generator.Next(0, remaining);
+                yield return content[index];
                 remaining -= 1;
-                content[generator.Current] = content[remaining];
+                content[index] = content[remaining];
             }
         }
     }
